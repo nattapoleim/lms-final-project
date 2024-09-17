@@ -8,15 +8,28 @@ import {
    SheetTitle,
    SheetTrigger,
 } from '@/components/ui/sheet'
+import { AuthService } from '@/services/AuthService'
+import useUserStore from '@/store/userStore'
 
 import { Menu } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function NavbarDrawer() {
+   const { user, setUser } = useUserStore()
+   const navigate = useNavigate()
+
+   const hadleLogout = () => {
+      AuthService.logout()
+      setUser(null)
+      navigate('/')
+   }
+
    return (
       <Sheet>
-         <SheetTrigger>
-            <Menu />
+         <SheetTrigger asChild>
+            <Button variant={'outline'}>
+               <Menu />
+            </Button>
          </SheetTrigger>
          <SheetContent>
             <SheetHeader>
@@ -28,8 +41,26 @@ export default function NavbarDrawer() {
                <NavLink title='Home' path='/' btnStyle='ghost' />
                <NavLink title='Courses' path='/courses' btnStyle='ghost' />
                <NavLink title='About' path='/about' btnStyle='ghost' />
-               <NavLink title='Log in' path='/login' btnStyle='outline' />
-               <NavLink title='Get Started Free' path='/register' btnStyle='default' />
+               {user ? (
+                  <>
+                     <NavLink title='Profile' path='/profile' btnStyle='ghost' />
+                     <SheetClose asChild>
+                        <Button
+                           size='lg'
+                           className='w-full text-lg font-light tracking-wider'
+                           variant='outline'
+                           onClick={hadleLogout}
+                        >
+                           Log out
+                        </Button>
+                     </SheetClose>
+                  </>
+               ) : (
+                  <>
+                     <NavLink title='Log in' path='/login' btnStyle='outline' />
+                     <NavLink title='Get Started Free' path='/register' btnStyle='default' />
+                  </>
+               )}
             </div>
          </SheetContent>
       </Sheet>
