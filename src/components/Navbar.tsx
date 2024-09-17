@@ -1,3 +1,4 @@
+import NavbarDrawer from '@/components/NavbarDrawer'
 import { Button } from '@/components/ui/button'
 import {
    NavigationMenu,
@@ -48,18 +49,18 @@ function Navbar() {
    return (
       <header className='sticky inset-x-0 top-0 h-16 shadow'>
          <nav className='container flex items-center justify-between h-full'>
-            <div className='text-3xl font-medium tracking-wider'>
+            <Link to='/' className='text-3xl font-medium tracking-wider'>
                VAAN<span className='font-light text-primary/70'>DEMY.</span>
-            </div>
-            <div className='flex items-center gap-10'>
+            </Link>
+            <div className='items-center hidden gap-10 md:flex'>
                <NavigationMenu>
                   <NavigationMenuList>
                      <NavigationMenuItem>
-                        <Link to='/'>
-                           <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink asChild>
+                           <Link to='/' className={navigationMenuTriggerStyle()}>
                               Home
-                           </NavigationMenuLink>
-                        </Link>
+                           </Link>
+                        </NavigationMenuLink>
                      </NavigationMenuItem>
                      <NavigationMenuItem>
                         <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
@@ -88,22 +89,25 @@ function Navbar() {
                         </NavigationMenuContent>
                      </NavigationMenuItem>
                      <NavigationMenuItem>
-                        <Link to='/about'>
-                           <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink asChild>
+                           <Link to='/about' className={navigationMenuTriggerStyle()}>
                               About
-                           </NavigationMenuLink>
-                        </Link>
+                           </Link>
+                        </NavigationMenuLink>
                      </NavigationMenuItem>
                   </NavigationMenuList>
                </NavigationMenu>
             </div>
-            <div className='flex items-center gap-4'>
+            <div className='items-center hidden gap-4 md:flex'>
                <Link to='/login'>
                   <Button variant='outline'>Log in</Button>
                </Link>
                <Link to='/register'>
                   <Button variant='default'>Get Started Free</Button>
                </Link>
+            </div>
+            <div className='block md:hidden'>
+               <NavbarDrawer />
             </div>
          </nav>
       </header>

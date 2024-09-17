@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
 
 function CoursePage() {
-   const { param } = useParams()
+   const { courseName } = useParams()
    return (
       <div>
          <h1 className='text-5xl'>Course Page</h1>
-         <h2 className='text-4xl'>{param}</h2>
+         <h2 className='text-4xl'>{courseName}</h2>
       </div>
    )
 }
