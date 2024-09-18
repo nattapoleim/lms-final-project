@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/navbar/Navbar'
 import AboutPage from '@/pages/AboutPage'
 import AllCoursesPage from '@/pages/AllCoursesPage'
 import CoursePage from '@/pages/CoursePage'

@@ -38,6 +38,9 @@ export default function NavbarDrawer() {
             </SheetHeader>
 
             <div className='grid gap-4 mt-10 mb-4 text-center'>
+               {user && (
+                  <div className='text-lg font-semibold text-blue-500 uppercase'>{user.name}</div>
+               )}
                <NavLink title='Home' path='/' btnStyle='ghost' />
                <NavLink title='Courses' path='/courses' btnStyle='ghost' />
                <NavLink title='About' path='/about' btnStyle='ghost' />
