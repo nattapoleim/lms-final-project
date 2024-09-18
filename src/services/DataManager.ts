@@ -38,7 +38,24 @@ export class DataManager {
       this.categories = categoriesData.map((name, index) => new Category(index + 1, name))
    }
 
-   getCourseByCategory(categoryName: string): Course[] {
-      return this.courses.filter(course => course.category === categoryName)
+   async fetchCourseByCategory(categoryName: string): Promise<void> {
+      const res = await fetch(
+         import.meta.env.VITE_API_URL + '/categories/' + categoryName + '/courses',
+      )
+      const courseData: Course[] = await res.json()
+      this.courses = courseData.map(course => {
+         const curCourse = new Course(
+            course.id,
+            course.name,
+            course.description,
+            course.image,
+            course.category,
+         )
+         course.lectures.map(lecture =>
+            curCourse.addLecture(new Lecture(lecture.id, lecture.title, lecture.duration)),
+         )
+         return curCourse
+      })
+      // return this.courses.filter(course => course.category === categoryName)
    }
 }

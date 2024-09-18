@@ -33,7 +33,9 @@ export default function NavbarDrawer() {
          </SheetTrigger>
          <SheetContent>
             <SheetHeader>
-               <SheetTitle className='tracking-wider'>VAANDEMY.</SheetTitle>
+               <SheetTitle className='font-medium tracking-wider'>
+                  Vaan<span className='text-primary'>demy.</span>
+               </SheetTitle>
                <SheetDescription>Menu</SheetDescription>
             </SheetHeader>
 

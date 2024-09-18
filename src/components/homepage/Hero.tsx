@@ -7,7 +7,7 @@ function Hero({ user }: { user: User | null }) {
    return (
       <section className='bg-[#f9f9f9]'>
          <div className='container flex flex-col-reverse items-center justify-center gap-10 py-10 lg:gap-0 lg:flex-row'>
-            <div className='flex flex-col items-center justify-center gap-10 text-center lg:text-start lg:items-start'>
+            <div className='flex flex-col items-center justify-center gap-10 ml-10 text-center lg:text-start lg:items-start'>
                <h1 className='text-2xl font-medium sm:text-4xl md:text-5xl'>
                   Online Courses Improve your programming skills
                </h1>
