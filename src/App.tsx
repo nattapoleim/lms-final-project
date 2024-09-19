@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Navbar from '@/components/navbar/Navbar'
 import AboutPage from '@/pages/AboutPage'
 import AllCoursesPage from '@/pages/AllCoursesPage'
@@ -56,6 +57,7 @@ function App() {
             />
             <Route path='*' element={<NotFoundPage />} />
          </Routes>
+         <Footer />
       </BrowserRouter>
    )
 }

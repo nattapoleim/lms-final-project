@@ -14,16 +14,23 @@ function HomePage() {
    const [courses, setCourses] = useState<Course[]>([])
    const [categories, setCategories] = useState<Category[]>([])
    const [selectedCategory, setSelectedCategory] = useState<string>('All')
+   const [coursesLoading, setCoursesLoading] = useState<boolean>(false)
+   const [categoriesLoading, setCategoriesLoading] = useState<boolean>(false)
 
    useEffect(() => {
       const fetchData = async () => {
          try {
+            setCoursesLoading(true)
+            setCategoriesLoading(true)
             await dataManager.fetchCourse()
             await dataManager.fetchCategories()
             setCourses(dataManager.courses)
             setCategories(dataManager.categories)
          } catch (error) {
             console.log('Error Fetching Data From API /HOMEPAGE/ :', error)
+         } finally {
+            setCoursesLoading(false)
+            setCategoriesLoading(false)
          }
       }
       fetchData()
@@ -31,12 +38,15 @@ function HomePage() {
 
    const handleCategoryChange = async (categoryName: string) => {
       setSelectedCategory(categoryName)
+      setCoursesLoading(true)
       if (categoryName) {
          await dataManager.fetchCourseByCategory(categoryName)
          setCourses(dataManager.courses)
+         setCoursesLoading(false)
       } else {
          await dataManager.fetchCourse()
          setCourses(dataManager.courses)
+         setCoursesLoading(false)
       }
    }
 
@@ -49,8 +59,9 @@ function HomePage() {
                categories={categories}
                selectedCategory={selectedCategory}
                handleCategoryChange={handleCategoryChange}
+               categoriesLoading={categoriesLoading}
             />
-            <CourseList courses={courses} />
+            <CourseList courses={courses} coursesLoading={coursesLoading} />
          </section>
       </main>
    )
