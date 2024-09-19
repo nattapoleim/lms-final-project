@@ -19,7 +19,7 @@ function CategoriesList({
    categoriesLoading,
 }: CategoriesListProps) {
    return (
-      <div className='flex flex-wrap items-center gap-2 sm:gap-6'>
+      <div className='flex flex-wrap items-center gap-2 lg:flex-col lg:items-start sm:gap-6'>
          {!categoriesLoading ? (
             <>
                <Button

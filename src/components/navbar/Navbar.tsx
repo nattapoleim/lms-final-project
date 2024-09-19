@@ -15,7 +15,7 @@ function Navbar() {
    const { user } = useUserStore()
 
    return (
-      <header className='sticky inset-x-0 top-0 h-16 bg-white'>
+      <header className='sticky inset-x-0 top-0 z-20 h-16 bg-white'>
          <nav className='container flex items-center justify-between h-full'>
             <Link to='/' className='text-2xl font-medium tracking-wider'>
                Vaan<span className='text-primary'>demy.</span>

@@ -3,14 +3,14 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Skeleton } from '@/components/ui/skeleton'
 import { Course } from '@/models/Course'
 
-type CourseListProps = {
+type AllCourseListProps = {
    courses: Course[]
    coursesLoading: boolean
 }
 
-function CourseList({ courses, coursesLoading }: CourseListProps) {
+function AllCoursesList({ courses, coursesLoading }: AllCourseListProps) {
    return (
-      <div className='grid justify-center w-full gap-4 sm:justify-start md:grid-cols-2 lg:gap-10 lg:grid-cols-3 2xl:grid-cols-4'>
+      <div className='grid justify-center w-full gap-4 sm:justify-start md:grid-cols-2 lg:gap-6 xl:grid-cols-3 2xl:grid-cols-4'>
          {!coursesLoading ? (
             <>
                {courses.map(course => (
@@ -69,4 +69,4 @@ function CourseList({ courses, coursesLoading }: CourseListProps) {
    )
 }
 
-export default CourseList
+export default AllCoursesList

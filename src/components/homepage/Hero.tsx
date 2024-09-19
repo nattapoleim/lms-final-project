@@ -16,7 +16,7 @@ function Hero({ user }: { user: User | null }) {
                   better!
                </p>
                {user ? (
-                  <Link className='mt-6 sm:mt-0' to='#courses'>
+                  <Link className='mt-6 sm:mt-0' to='/courses'>
                      <Button size='lg' className='uppercase'>
                         All Courses
                      </Button>
