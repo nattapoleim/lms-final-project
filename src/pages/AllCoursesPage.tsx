@@ -48,7 +48,7 @@ function AllCoursesPage() {
    }
 
    return (
-      <section className='container my-10 space-y-10'>
+      <section className='container my-10 space-y-10 min-h-[calc(100svh-5rem)]'>
          <h2 className='text-3xl font-semibold'>Courses</h2>
          <div className='grid gap-4 lg:grid-cols-4'>
             <div className='lg:col-span-1'>

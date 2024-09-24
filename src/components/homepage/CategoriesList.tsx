@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { Category } from '@/models/Category'
+import { useLocation } from 'react-router-dom'
 
 type CategoriesListProps = {
    categories: Category[]
@@ -18,8 +19,15 @@ function CategoriesList({
    handleCategoryChange,
    categoriesLoading,
 }: CategoriesListProps) {
+   const { pathname } = useLocation()
+
    return (
-      <div className='flex flex-wrap items-center gap-2 lg:flex-col lg:items-start sm:gap-6'>
+      <div
+         className={cn(
+            'flex flex-wrap items-center gap-2 sm:gap-6',
+            pathname === '/courses' && 'lg:flex-col lg:items-start',
+         )}
+      >
          {!categoriesLoading ? (
             <>
                <Button

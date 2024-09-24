@@ -46,7 +46,7 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/courses' element={<AllCoursesPage />} />
-            <Route path='/courses/:courseName' element={<CoursePage />} />
+            <Route path='/courses/:courseId' element={<CoursePage />} />
             <Route
                path='/courses/:courseName/:lectureId'
                element={

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Course } from '@/models/Course'
+import { Link } from 'react-router-dom'
 
 type AllCourseListProps = {
    courses: Course[]
@@ -32,7 +33,9 @@ function AllCoursesList({ courses, coursesLoading }: AllCourseListProps) {
                         <p className='text-sm text-muted-foreground'>{course.description}</p>
                      </CardContent>
                      <CardFooter className='p-4 h-[4rem]'>
-                        <Button className='w-full'>Learn More</Button>
+                        <Link to={`/courses/${course.id}`} className='w-full'>
+                           <Button className='w-full'>Learn More</Button>
+                        </Link>
                      </CardFooter>
                   </Card>
                ))}{' '}

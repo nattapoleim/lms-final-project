@@ -32,6 +32,22 @@ export class DataManager {
       })
    }
 
+   async fetchCourseById(courseId: string): Promise<void> {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/courses/' + courseId)
+      const courseData: Course = await res.json()
+      const course = new Course(
+         courseData.id,
+         courseData.name,
+         courseData.description,
+         courseData.image,
+         courseData.category,
+      )
+      courseData.lectures.map(lecture =>
+         course.addLecture(new Lecture(lecture.id, lecture.title, lecture.duration)),
+      )
+      this.courses = [course]
+   }
+
    async fetchCategories(): Promise<void> {
       const res = await fetch(import.meta.env.VITE_API_URL + '/categories')
       const categoriesData: string[] = await res.json()
@@ -56,6 +72,5 @@ export class DataManager {
          )
          return curCourse
       })
-      // return this.courses.filter(course => course.category === categoryName)
    }
 }
